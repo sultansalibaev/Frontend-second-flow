@@ -2,7 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import classes from './Modal.module.scss'
 import React, { type ReactNode, useCallback, useEffect } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
-import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
     className?: string
@@ -46,11 +45,10 @@ export const Modal = function (props: ModalProps) {
         [classes.opened]: isOpen
     }
 
-    const { theme } = useTheme()
 
     return (
         <Portal>
-            <div className={classNames(mods, [classes.Modal, className, theme])}>
+            <div className={classNames(mods, [classes.Modal, className])}>
                 <div className={classes.overlay} onClick={closeHandler}>
                     <div className={classes.content} onClick={stopPropagation}>
                         {children}

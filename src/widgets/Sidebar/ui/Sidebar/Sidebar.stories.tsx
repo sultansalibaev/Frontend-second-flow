@@ -16,6 +16,7 @@ export default {
 const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />
 
 export const Light = Template.bind({})
+Light.decorators = [ThemeDecorator(Theme.LIGHT)]
 
 export const Dark = Template.bind({})
 Dark.decorators = [ThemeDecorator(Theme.DARK)]

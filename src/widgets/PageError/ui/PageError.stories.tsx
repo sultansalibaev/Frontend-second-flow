@@ -19,6 +19,8 @@ const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args
 export const Light = Template.bind({})
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 Light.args = {}
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+Light.decorators = [ThemeDecorator(Theme.LIGHT)]
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const Dark = Template.bind({})

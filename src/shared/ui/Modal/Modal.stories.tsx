@@ -16,6 +16,7 @@ export default {
 const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />
 
 export const Primary = Template.bind({})
+Primary.decorators = [ThemeDecorator(Theme.LIGHT)]
 Primary.args = {
     isOpen: true,
     children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero molestias, vitae? Architecto aspernatur eaque enim id illo itaque,minima, nisi non placeat repudiandae, tenetur ullam voluptas voluptatem? Blanditiis laudantium, placeat.'
