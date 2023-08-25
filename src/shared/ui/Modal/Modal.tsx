@@ -50,7 +50,7 @@ export const Modal = function (props: ModalProps) {
 
     return (
         <Portal>
-            <div className={classNames(mods, [classes.Modal, className, classes[theme]])}>
+            <div className={classNames(mods, [classes.Modal, className, theme])}>
                 <div className={classes.overlay} onClick={closeHandler}>
                     <div className={classes.content} onClick={stopPropagation}>
                         {children}
