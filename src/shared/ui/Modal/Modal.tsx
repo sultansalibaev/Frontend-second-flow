@@ -45,7 +45,6 @@ export const Modal = function (props: ModalProps) {
         [classes.opened]: isOpen
     }
 
-
     return (
         <Portal>
             <div className={classNames(mods, [classes.Modal, className])}>

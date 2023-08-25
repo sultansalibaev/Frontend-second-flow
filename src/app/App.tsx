@@ -5,7 +5,6 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 
 const App = () => {
-
     return (
         <div className={classNames({}, ['app'])}>
             <Suspense fallback="">
