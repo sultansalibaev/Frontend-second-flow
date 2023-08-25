@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/", // we do it with webpack
+    "noImplicitAny": true,
+    "module": "ESNext", // es6
+    "target": "es5", // compile to es5
+    "jsx": "react-jsx", // return (<div>...</div>)
+    "allowJs": true, // the compiler processes js and ts files
+    "moduleResolution": "node", // import type is node or classic
+    "baseUrl": ".", // For absolute import
+    "paths": {
+      "*": ["./src/*"]
+    },
+    "strictNullChecks": true,
+    "esModuleInterop": true, // use import instead require
+    "allowSyntheticDefaultImports": true // import * as webpack from 'webpack'
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": [
+    "./config/jest/jest-setup.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./config/**/*.ts",
+    "./config/**/*.tsx",
+    "./webpack.config.ts"
+  ]
+}
