@@ -1,5 +1,4 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import classes from './LoginModal.module.scss'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { LoginForm } from '../LoginForm/LoginForm'
 
@@ -20,7 +19,7 @@ export const LoginModal = function (props: LoginModalProps) {
         <Modal
             isOpen={isOpen}
             onClose={onClose}
-            className={classNames({}, [classes.LoginModal, className])}
+            className={classNames({}, [className])}
             lazy
         >
             <LoginForm/>
