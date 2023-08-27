@@ -9,5 +9,7 @@
   "Обновить страницу": "Refresh the page",
   "Произошла непредвиденная ошибка": "An unexpected error has occurred",
   "Переключить": "Toggle",
-  "Короткий язык": "En"
+  "Короткий язык": "En",
+  "Введите пароль": "Enter password",
+  "Введите username": "Enter username"
 }

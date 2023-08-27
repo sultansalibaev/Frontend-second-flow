@@ -1,4 +1,5 @@
 {
+  "": "",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     "\n                    Libero molestias, vitae? Architecto aspernatur eaque enim id illo itaque,\n                    minima, nisi non placeat repudiandae, tenetur ullam voluptas voluptatem?\n                    Blanditiis laudantium, placeat": {
       "": ""
@@ -7,6 +8,8 @@
   "decrement": "",
   "increment": "",
   "throw error": "",
+  "Введите username": "",
+  "Введите пароль": "",
   "Войти": "",
   "Главная": "",
   "О сайте": "",
