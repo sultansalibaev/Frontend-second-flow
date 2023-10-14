@@ -62,3 +62,8 @@
 .size_xl {
     font: var(--font-xl);
 }
+
+.disabled {
+    opacity: .5;
+    cursor: default;
+}

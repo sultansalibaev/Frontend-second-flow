@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { type LoginSchema } from '../types/loginSchema'
+import { type LoginErrors, type LoginSchema } from '../types/loginSchema'
 import { loginByEmail } from 'features/AuthByUsername/model/services/loginByEmail/loginByEmail'
 
 const initialState: LoginSchema = {
@@ -22,7 +22,7 @@ export const loginSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(loginByEmail.pending, (state) => {
-                state.error = undefined
+                state.errors = undefined
                 state.isLoading = true
             })
             .addCase(loginByEmail.fulfilled, (state, action) => {
@@ -31,7 +31,7 @@ export const loginSlice = createSlice({
             })
             .addCase(loginByEmail.rejected, (state, action) => {
                 state.isLoading = false
-                state.error = action.payload
+                state.errors = action.payload as LoginErrors
             })
     }
 })

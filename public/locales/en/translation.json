@@ -11,5 +11,9 @@
   "Переключить": "Toggle",
   "Короткий язык": "En",
   "Введите пароль": "Enter password",
-  "Введите username": "Enter username"
+  "Введите username": "Enter username",
+  "Форма авторизации": "Authorization form",
+  "Войти": "Login",
+  "Некорректный email": "Invalid Email",
+  "Не меньше 4 и не больше 16": "At least 4 and at most 16"
 }

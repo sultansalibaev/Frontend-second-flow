@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 import { Provider } from 'react-redux'
-import { createReduxStore } from 'app/providers/StoryProvider'
-import { type StateSchema } from 'app/providers/StoryProvider/config/StateSchema'
+import { createReduxStore } from 'app/providers/StoreProvider'
+import { type StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
 import { type DeepPartial } from '@reduxjs/toolkit'
 
 interface StoryProviderProps {
@@ -9,7 +9,7 @@ interface StoryProviderProps {
     initialState?: DeepPartial<StateSchema>
 }
 
-export const StoryProvider = function (props: StoryProviderProps) {
+export const StoreProvider = function (props: StoryProviderProps) {
     const {
         children,
         initialState
