@@ -15,5 +15,6 @@
   "Форма авторизации": "Authorization form",
   "Войти": "Login",
   "Некорректный email": "Invalid Email",
-  "Не меньше 4 и не больше 16": "At least 4 and at most 16"
+  "Не меньше 4 и не больше 16": "At least 4 and at most 16",
+  "Выйти": "Logout"
 }

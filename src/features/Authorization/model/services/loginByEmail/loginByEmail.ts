@@ -11,9 +11,7 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, { rejectVa
     'auth/login',
     async (authData, thunkAPI) => {
         try {
-            const response = await $api.post<User>('/auth/login', authData, {
-                withCredentials: true
-            })
+            const response = await $api.post<User>('/auth/login', authData)
 
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
             if (!response.data) throw new Error()
