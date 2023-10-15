@@ -16,7 +16,6 @@ module.exports = {
     },
 
     docs: {
-        autodocs: true,
-        defaultName: 'Docs'
+        autodocs: true
     }
 }
