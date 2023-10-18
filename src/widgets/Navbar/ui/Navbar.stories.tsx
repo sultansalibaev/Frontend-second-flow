@@ -4,6 +4,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { Navbar } from './Navbar'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider/lib/ThemeContext'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 export default {
     title: 'widget/Navbar',
@@ -15,14 +16,27 @@ export default {
 
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const Light = Template.bind({})
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 Light.args = {}
+Light.decorators = [StoreDecorator({
+})]
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const Dark = Template.bind({})
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 Dark.args = {}
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+    })
+]
+
+export const AuthNavbar = Template.bind({})
+AuthNavbar.args = {}
+AuthNavbar.decorators = [
+    StoreDecorator({
+        user: {
+            authData: {
+                email: 'in7678523@gmail.com'
+            }
+        }
+    })
+]

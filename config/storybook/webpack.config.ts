@@ -39,7 +39,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
     config.plugins?.push(
         new webpack.DefinePlugin({
-            __IS_DEV__: process.env.mode === 'development'
+            __IS_DEV__: true // process.env.mode === 'development'
         })
     )
 

@@ -6,7 +6,7 @@ export const getUserData = createAsyncThunk<User, undefined, { rejectValue: stri
     'users/profile',
     async (authData = undefined, thunkAPI) => {
         try {
-            const response = await $api.get<User>('/users/profile')
+            const response = await $api.post<User>('/users/profile')
 
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
             if (!response.data) throw new Error()
