@@ -17,12 +17,14 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPl
             __IS_DEV__: JSON.stringify(isDev)
         })
     ]
+
+    plugins.push(new BundleAnalyzerPlugin({
+        openAnalyzer: false
+    }))
+
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin())
         plugins.push(new webpack.HotModuleReplacementPlugin())
-        plugins.push(new BundleAnalyzerPlugin({
-            openAnalyzer: false
-        }))
     } else {
         plugins.push(new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
