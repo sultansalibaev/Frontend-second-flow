@@ -7,7 +7,7 @@ import { Loader } from 'shared/ui/Loader/Loader'
 interface LoginModalProps {
     className?: string
     isOpen?: boolean
-    onClose?: () => void
+    onClose: () => void
 }
 
 export const LoginModal = function (props: LoginModalProps) {
@@ -25,7 +25,7 @@ export const LoginModal = function (props: LoginModalProps) {
             lazy
         >
             <Suspense fallback={<Loader/>}>
-                <LoginFormAsync/>
+                <LoginFormAsync onSuccess={onClose}/>
             </Suspense>
         </Modal>
     )

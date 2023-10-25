@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui/Button'
 import { Input } from 'shared/ui/Input/Input'
 import { ButtonTheme } from 'shared/ui/Button/ui/Button'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { memo, useCallback } from 'react'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 // import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
@@ -15,9 +15,11 @@ import { getLoginEmail } from 'features/Authorization/model/selectors/getLoginEm
 import { getLoginErrors } from 'features/Authorization/model/selectors/getLoginErrors/getLoginErrors'
 import { getLoginIsLoading } from 'features/Authorization/model/selectors/getLoginIsLoading/getLoginIsLoading'
 import { getLoginPassword } from 'features/Authorization/model/selectors/getLoginPassword/getLoginPassword'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 export interface LoginFormProps {
     className?: string
+    onSuccess: () => void
 }
 
 const initialReducers: ReducersList = {
@@ -26,11 +28,12 @@ const initialReducers: ReducersList = {
 
 const LoginForm = memo(function (props: LoginFormProps) {
     const {
-        className = ''
+        className = '',
+        onSuccess
     } = props
 
     const { t } = useTranslation()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     // const {
     //     email,
@@ -52,9 +55,13 @@ const LoginForm = memo(function (props: LoginFormProps) {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByEmail({ email, password }))
-    }, [dispatch, password, email])
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByEmail({ email, password }))
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess()
+        }
+        console.log(result)
+    }, [onSuccess, dispatch, password, email])
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const emailError = `email - ${errors?.email?.map(text => t(text))?.join(', ')}`

@@ -1,13 +1,15 @@
 import { type DeepPartial } from '@reduxjs/toolkit'
 import { type StateSchema } from 'app/providers/StoreProvider'
 import { getLoginIsLoading } from './getLoginIsLoading'
+import { type LoginSchema } from 'features/Authorization'
 
 describe('getLoginIsLoading.test', () => {
     test('should return true', () => {
+        const loginForm: DeepPartial<LoginSchema> = {
+            isLoading: true
+        }
         const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                isLoading: true
-            }
+            loginForm: loginForm as LoginSchema
         }
         expect(getLoginIsLoading(state as StateSchema)).toEqual(true)
     })

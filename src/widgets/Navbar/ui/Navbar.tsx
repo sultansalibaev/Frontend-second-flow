@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import classes from './Navbar.module.scss'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
-import { useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { Button } from 'shared/ui/Button'
 import { useTranslation } from 'react-i18next'
 import { ButtonTheme } from 'shared/ui/Button/ui/Button'
@@ -13,7 +13,7 @@ interface NavbarProps {
     className?: string
 }
 
-export const Navbar = function ({ className = '' }: NavbarProps) {
+export const Navbar = memo(({ className = '' }: NavbarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false)
 
     const authData = useSelector(getUserAuthData)
@@ -63,4 +63,4 @@ export const Navbar = function ({ className = '' }: NavbarProps) {
             </div>
         </div>
     )
-}
+})

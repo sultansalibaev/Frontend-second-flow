@@ -1,15 +1,17 @@
 import { type DeepPartial } from '@reduxjs/toolkit'
 import { type StateSchema } from 'app/providers/StoreProvider'
 import { getLoginErrors } from './getLoginErrors'
+import { type LoginSchema } from 'features/Authorization'
 
 describe('getLoginErrors.test', () => {
     test('should return error', () => {
-        const state: DeepPartial<StateSchema> = {
-            loginForm: {
-                errors: {
-                    message: 'Некорректный email или пароль'
-                }
+        const loginForm: DeepPartial<LoginSchema> = {
+            errors: {
+                message: 'Некорректный email или пароль'
             }
+        }
+        const state: DeepPartial<StateSchema> = {
+            loginForm: loginForm as LoginSchema
         }
         expect(getLoginErrors(state as StateSchema)).toEqual({ message: 'Некорректный email или пароль' })
     })
