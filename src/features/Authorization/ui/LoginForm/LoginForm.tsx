@@ -7,10 +7,14 @@ import { ButtonTheme } from 'shared/ui/Button/ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { memo, useCallback } from 'react'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+// import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { getLoginEmail } from 'features/Authorization/model/selectors/getLoginEmail/getLoginEmail'
+import { getLoginErrors } from 'features/Authorization/model/selectors/getLoginErrors/getLoginErrors'
+import { getLoginIsLoading } from 'features/Authorization/model/selectors/getLoginIsLoading/getLoginIsLoading'
+import { getLoginPassword } from 'features/Authorization/model/selectors/getLoginPassword/getLoginPassword'
 
 export interface LoginFormProps {
     className?: string
@@ -28,12 +32,17 @@ const LoginForm = memo(function (props: LoginFormProps) {
     const { t } = useTranslation()
     const dispatch = useDispatch()
 
-    const {
-        email,
-        password,
-        errors,
-        isLoading
-    } = useSelector(getLoginState)
+    // const {
+    //     email,
+    //     password,
+    //     errors,
+    //     isLoading
+    // } = useSelector(getLoginState)
+
+    const email = useSelector(getLoginEmail)
+    const password = useSelector(getLoginPassword)
+    const isLoading = useSelector(getLoginIsLoading)
+    const errors = useSelector(getLoginErrors)
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setEmail(value))

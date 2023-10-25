@@ -46,9 +46,11 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest//jest-setup.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        $api: path.resolve(__dirname, 'mocks', 'axiosInterceptor.ts')// Point to your manual mock
         // '^.+\\.(css|less|scss)$': 'babel-jest'
     },
+
     // globals: {
     //     'ts-jest': {
     //         diagnostics: false

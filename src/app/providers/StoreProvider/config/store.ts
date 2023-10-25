@@ -3,6 +3,7 @@ import { type StateSchema } from './StateSchema'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager'
+import { $api } from 'shared/lib/http/axiosInterceptor'
 
 export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -13,10 +14,17 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
 
     const reducerManager = createReducerManager(rootReducer)
 
-    const store = configureStore<StateSchema>({
+    const store = configureStore({
         reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
-        preloadedState: initialState
+        preloadedState: initialState,
+        middleware: getDefaultMiddleware => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: $api
+                }
+            }
+        })
     })
 
     // @ts-expect-error

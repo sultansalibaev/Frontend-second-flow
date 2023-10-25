@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { type User } from 'entities/User'
+
 const API_URL = 'http://localhost:8080'
 
-const $api = axios.create({
+export const $api = axios.create({
     withCredentials: true,
     baseURL: API_URL
 })
@@ -28,5 +29,3 @@ $api.interceptors.request.use((config) => {
     }
     throw error
 })
-
-export { $api, API_URL }
