@@ -1,29 +1,36 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type User, userActions } from 'entities/User'
+import { type ThunkConfig } from 'app/providers/StoreProvider'
 // import { $api } from 'shared/lib/http/axiosInterceptor'
-import axios from 'axios'
+// import axios from 'axios'
+// import { type ThunkExtraArg } from 'app/providers/StoreProvider'
 
 interface LoginByEmailProps {
     email: string
     password: string
 }
 
-export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, { rejectValue: string }>(
+export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, ThunkConfig<string>>(
     'auth/login',
-    async (authData, { extra, dispatch, rejectWithValue }) => {
-        try {
-            const response = await axios.post<User>('/auth/login', authData)
+    async (authData, thunkAPI) => {
+        const {
+            extra,
+            dispatch,
+            rejectWithValue
+        } = thunkAPI
 
-            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-            if (!response.data) throw new Error()
+        try {
+            const response = await extra.api.post<User>('/auth/login', authData)
 
             dispatch(userActions.setAuthData({
                 email: authData.email
             }))
 
+            // extra.navigate?.('/profile')
+
             return response.data
         } catch (err) {
-            console.log(err)
+            // @ts-expect-error
             return rejectWithValue(err.response.data) // 'error login'
         }
     }

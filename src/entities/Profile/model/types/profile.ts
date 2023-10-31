@@ -1,11 +1,12 @@
-import { type Country, type Currency } from 'shared/const/common'
+import { type Currency } from 'entities/Currency/model/types/currency'
+import { type Country } from 'entities/Country'
 
 export interface Profile {
     email: string // 'in7678523@gmail.com'
     role?: string // 'admin'
     username?: string // 'Sula'
     balance?: number // 0
-    phone?: number // '87789857552'
+    phone?: string // '87789857552'
     avatar?: string // 'blob:https://web.telegram.org/f1bd54ce-db05-4d8d-ac01-6dc9e0100adb'
     gender?: string // 'male'
     firstname?: string // 'Sultan'
@@ -19,6 +20,7 @@ export interface Profile {
 
 export interface ProfileSchema {
     data?: Profile
+    form?: Profile
     isLoading: boolean
     error?: string
     readonly: boolean

@@ -1,23 +1,23 @@
 import axios from 'axios'
 import { type User } from 'entities/User'
 
-const API_URL = 'http://localhost:8080'
-
-export const $api = axios.create({
+const $api = axios.create({
     withCredentials: true,
-    baseURL: API_URL
+    baseURL: __API__
 })
 
-$api.interceptors.request.use((config) => {
+$api.interceptors.response.use((config) => {
+    console.log('$api.interceptors response', config)
     return config
 }, async (error: any) => {
+    console.log('$api.interceptors error')
     const originalRequest = error.config
     if (error.response.status === 401 && (Boolean(error.config)) && error.config._isRetry !== true) {
         originalRequest._isRetry = true
         try {
             const response = await $api.post<User>('/auth/refresh')
 
-            console.log('auth/login', response.data)
+            console.log('auth/refresh', response.data)
 
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
             if (!response.data) throw new Error()
@@ -29,3 +29,7 @@ $api.interceptors.request.use((config) => {
     }
     throw error
 })
+
+export {
+    $api
+}

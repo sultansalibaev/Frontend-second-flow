@@ -1,11 +1,12 @@
-import { type Country, type Currency } from 'shared/const/common'
+import { type Currency } from 'entities/Currency/model/types/currency'
+import { type Country } from 'entities/Country'
 
 export interface User {
     readonly email: string // 'in7678523@gmail.com'
     readonly role?: string // 'admin'
     readonly username?: string // 'Sula'
     readonly balance?: number // 0
-    readonly phone?: number // '87789857552'
+    readonly phone?: string // '87789857552'
     readonly avatar?: string // 'blob:https://web.telegram.org/f1bd54ce-db05-4d8d-ac01-6dc9e0100adb'
     readonly gender?: string // 'male'
     readonly firstname?: string // 'Sultan'

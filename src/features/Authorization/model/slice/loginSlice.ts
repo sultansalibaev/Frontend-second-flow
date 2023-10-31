@@ -24,14 +24,16 @@ export const loginSlice = createSlice({
             .addCase(loginByEmail.pending, (state) => {
                 state.errors = undefined
                 state.isLoading = true
+                console.log('loginByEmail pending')
             })
             .addCase(loginByEmail.fulfilled, (state, action) => {
                 state.isLoading = false
-                console.log('login success', action.payload)
+                console.log('loginByEmail fulfilled', action.payload)
             })
             .addCase(loginByEmail.rejected, (state, action) => {
                 state.isLoading = false
                 state.errors = action.payload as LoginErrors
+                console.log('loginByEmail rejected')
             })
     }
 })

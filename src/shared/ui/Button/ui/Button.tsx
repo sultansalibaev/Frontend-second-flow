@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import classes from './Button.module.scss'
 import { type ButtonHTMLAttributes, memo, type ReactNode } from 'react'
 
@@ -6,6 +6,7 @@ export enum ButtonTheme {
     CLEAR = 'clear',
     CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 }
@@ -36,14 +37,19 @@ export const Button = memo((props: ButtonProps) => {
         ...otherProps
     } = props
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [classes.square]: square ?? false,
         [classes.disabled]: disabled ?? false
     }
 
     return (
         <button
-            className={classNames(mods, [classes.Button, classes[theme ?? ''], classes[size], className ?? ''])}
+            className={classNames(mods, [
+                classes.Button,
+                classes[theme ?? ButtonTheme.OUTLINE],
+                classes[size],
+                className ?? ''
+            ])}
             disabled={disabled}
             {...otherProps}
         >

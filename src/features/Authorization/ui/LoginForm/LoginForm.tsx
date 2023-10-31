@@ -7,7 +7,6 @@ import { ButtonTheme } from 'shared/ui/Button/ui/Button'
 import { useSelector } from 'react-redux'
 import { memo, useCallback } from 'react'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
-// import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -35,13 +34,6 @@ const LoginForm = memo(function (props: LoginFormProps) {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
-    // const {
-    //     email,
-    //     password,
-    //     errors,
-    //     isLoading
-    // } = useSelector(getLoginState)
-
     const email = useSelector(getLoginEmail)
     const password = useSelector(getLoginPassword)
     const isLoading = useSelector(getLoginIsLoading)
@@ -55,12 +47,13 @@ const LoginForm = memo(function (props: LoginFormProps) {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
-    const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByEmail({ email, password }))
-        if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess()
-        }
-        console.log(result)
+    const onLoginClick = useCallback(() => {
+        void (async () => {
+            const result = await dispatch(loginByEmail({ email, password }))
+            if (result.meta.requestStatus === 'fulfilled') {
+                onSuccess()
+            }
+        })()
     }, [onSuccess, dispatch, password, email])
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions

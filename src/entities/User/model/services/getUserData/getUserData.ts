@@ -1,22 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type User } from 'entities/User'
-import { $api } from 'shared/lib/http/axiosInterceptor'
+import { type ThunkConfig } from 'app/providers/StoreProvider'
 
-export const getUserData = createAsyncThunk<User, undefined, { rejectValue: string }>(
-    'users/profile',
+export const getUserData = createAsyncThunk<User, undefined, ThunkConfig<string>>(
+    'profile',
     async (authData = undefined, thunkAPI) => {
+        const {
+            extra,
+            // dispatch,
+            rejectWithValue
+        } = thunkAPI
+
         try {
-            const response = await $api.post<User>('/users/profile')
+            const response = await extra.api.post<User>('/profile')
 
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
             if (!response.data) throw new Error()
 
-            // thunkAPI.dispatch(userActions.initAuthData(response.data))
+            // dispatch(userActions.initAuthData(response.data))
 
             return response.data
         } catch (err) {
-            console.log('users/profile', err)
-            return thunkAPI.rejectWithValue(err.response.data) // 'error login'
+            console.log('profile', err)
+            // @ts-expect-error
+            return rejectWithValue(err.response.data) // 'error login'
         }
     }
 )

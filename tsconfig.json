@@ -6,6 +6,7 @@
     "target": "es5", // compile to es5
     "jsx": "react-jsx", // return (<div>...</div>)
     "allowJs": true, // the compiler processes js and ts files
+    "strict": true,
     "moduleResolution": "node", // import type is node or classic
     "baseUrl": ".", // For absolute import
     "paths": {

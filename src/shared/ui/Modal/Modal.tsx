@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import classes from './Modal.module.scss'
 import React, { type ReactNode, useCallback, useEffect, useState } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
@@ -51,7 +51,7 @@ export const Modal = function (props: ModalProps) {
         event.stopPropagation()
     }
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [classes.opened]: isOpen
     }
 
