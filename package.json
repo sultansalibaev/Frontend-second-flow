@@ -70,7 +70,7 @@
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
-    "loki": "0.31.1",
+    "loki": "^0.31.1",
     "mini-css-extract-plugin": "^2.5.3",
     "postcss": "^8.4.21",
     "react-refresh": "^0.14.0",
