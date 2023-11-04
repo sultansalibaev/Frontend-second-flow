@@ -3,14 +3,6 @@ import { userActions } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 
 describe('loginByEmail.test', () => {
-    // let dispatch: Dispatch
-    // let getState: () => StateSchema
-    //
-    // beforeEach(() => {
-    //     dispatch = jest.fn()
-    //     getState = jest.fn()
-    // })
-
     test('success login', async () => {
         const userValue = {
             email: 'in7678523@gmail.com'
@@ -29,8 +21,10 @@ describe('loginByEmail.test', () => {
 
     test('error login', async () => {
         const thunk = new TestAsyncThunk(loginByEmail)
+
         // eslint-disable-next-line prefer-promise-reject-errors
         thunk.api.post.mockReturnValue(Promise.reject({ status: 403 }))
+
         const result = await thunk.callThunk({ email: 'in7678523@gmail.com', password: '123456789' })
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2)

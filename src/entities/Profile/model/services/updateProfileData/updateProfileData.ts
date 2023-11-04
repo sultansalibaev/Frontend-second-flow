@@ -1,20 +1,35 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from 'app/providers/StoreProvider'
-import { type Profile } from '../../types/profile'
+import {
+    type Profile,
+    type ValidateProfileError,
+    ValidateProfileError as ValidateProfileErrors
+} from '../../types/profile'
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
+import { validateProfileData } from 'entities/Profile/model/services/validateProfileData/validateProfileData'
+import { profileActions } from 'entities/Profile'
 
-export const updateProfileData = createAsyncThunk<Profile, undefined, ThunkConfig<string>>(
+export const updateProfileData = createAsyncThunk<Profile, undefined, ThunkConfig<ValidateProfileError[]>>(
     'profile/update',
     async (_, thunkAPI) => {
         const {
             extra,
             rejectWithValue,
-            getState
+            getState,
+            dispatch
         } = thunkAPI
 
         const formData = getProfileForm(getState())
 
+        const validateErrors = validateProfileData(formData)
+
+        dispatch(profileActions.setValidateErrors(validateErrors))
+
         try {
+            if (validateErrors.length > 0) {
+                return rejectWithValue(validateErrors)
+            }
+
             const response = await extra.api.put<Profile>('/profile/update', formData)
 
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
@@ -23,8 +38,7 @@ export const updateProfileData = createAsyncThunk<Profile, undefined, ThunkConfi
             return response.data
         } catch (err) {
             console.log('profile', err)
-            // @ts-expect-error
-            return rejectWithValue(err.response.data) // 'error login'
+            return rejectWithValue([ValidateProfileErrors.SERVER_ERROR]) // 'error login'
         }
     }
 )

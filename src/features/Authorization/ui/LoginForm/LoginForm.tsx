@@ -15,6 +15,7 @@ import { getLoginErrors } from 'features/Authorization/model/selectors/getLoginE
 import { getLoginIsLoading } from 'features/Authorization/model/selectors/getLoginIsLoading/getLoginIsLoading'
 import { getLoginPassword } from 'features/Authorization/model/selectors/getLoginPassword/getLoginPassword'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { fetchProfileData } from 'entities/Profile'
 
 export interface LoginFormProps {
     className?: string
@@ -53,6 +54,8 @@ const LoginForm = memo(function (props: LoginFormProps) {
             if (result.meta.requestStatus === 'fulfilled') {
                 onSuccess()
             }
+
+            void dispatch(fetchProfileData())
         })()
     }, [onSuccess, dispatch, password, email])
 

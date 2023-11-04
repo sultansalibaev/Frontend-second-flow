@@ -14,9 +14,9 @@ export const logout = createAsyncThunk<User, undefined, ThunkConfig<string>>(
         try {
             const response = await extra.api.post<User>('/auth/logout')
 
-            dispatch(userActions.setAuthData({ email: '' }))
+            dispatch(userActions.logout())
 
-            extra.navigate?.('/about')
+            // extra.navigate?.('/about')
 
             return response.data
         } catch (err) {

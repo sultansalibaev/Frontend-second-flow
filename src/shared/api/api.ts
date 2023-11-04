@@ -7,7 +7,6 @@ const $api = axios.create({
 })
 
 $api.interceptors.response.use((config) => {
-    console.log('$api.interceptors response', config)
     return config
 }, async (error: any) => {
     console.log('$api.interceptors error')

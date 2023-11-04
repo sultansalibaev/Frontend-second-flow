@@ -19,6 +19,9 @@ export const fetchProfileData = createAsyncThunk<Profile, undefined, ThunkConfig
             //     email: response.data.email
             // }))
 
+            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+            if (!response.data) throw new Error()
+
             console.log('profile', response.data)
 
             return response.data

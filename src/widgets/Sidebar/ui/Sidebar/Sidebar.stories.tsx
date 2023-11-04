@@ -17,7 +17,18 @@ export default {
 const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />
 
 export const Light = Template.bind({})
-Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({})]
+Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
+    user: {
+        authData: { email: '' }
+    }
+})]
 
 export const Dark = Template.bind({})
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})]
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    user: {
+        authData: { email: '' }
+    }
+})]
+
+export const NoAuth = Template.bind({})
+NoAuth.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})]
