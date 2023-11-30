@@ -15,6 +15,7 @@ export const userSlice = createSlice({
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(action.payload))
         },
         logout: (state) => {
+            console.error('user logout')
             state.authData = undefined
             localStorage.removeItem(LOCAL_STORAGE_USER_KEY)
         },

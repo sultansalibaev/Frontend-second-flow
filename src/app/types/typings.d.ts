@@ -11,6 +11,7 @@ declare module '*.svg' {
     const SVG: React.VFC<React.SVGProps<SVGSVGElement>>
     export default SVG
 }
+declare module 'prismjs/components/prism-core.js';
 
 declare const __IS_DEV__: boolean
 declare const __API__: string

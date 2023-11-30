@@ -13,12 +13,18 @@ export enum TextAlign {
     CENTER = 'center'
 }
 
+export enum TextSize {
+    M = 'size-m',
+    L = 'size-l',
+}
+
 interface TextProps {
     className?: string
     title?: string
     text?: string
     theme?: TextTheme
     align?: TextAlign
+    size?: TextSize
 }
 
 export const Text = memo((props: TextProps) => {
@@ -27,14 +33,16 @@ export const Text = memo((props: TextProps) => {
         title,
         text,
         theme = TextTheme.PRIMARY,
-        align = TextAlign.LEFT
+        align = TextAlign.LEFT,
+        size = TextSize.M
     } = props
 
     const additional: string[] = [
         classes.LoginForm,
         className,
         classes[theme],
-        classes[align]
+        classes[align],
+        classes[size]
     ]
 
     return (

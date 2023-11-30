@@ -9,10 +9,12 @@ const $api = axios.create({
 $api.interceptors.response.use((config) => {
     return config
 }, async (error: any) => {
-    console.log('$api.interceptors error')
     const originalRequest = error.config
-    if (error.response.status === 401 && (Boolean(error.config)) && error.config._isRetry !== true) {
-        originalRequest._isRetry = true
+    if (
+        error.response.status === 401 &&
+        Boolean(error.config) &&
+        error.response.request.responseURL !== __API__ + '/auth/refresh'
+    ) {
         try {
             const response = await $api.post<User>('/auth/refresh')
 
@@ -24,6 +26,8 @@ $api.interceptors.response.use((config) => {
             return await $api.request(originalRequest)
         } catch (e) {
             console.error('Пользователь не авторизован', e)
+            localStorage.removeItem('user')
+            location.reload()
         }
     }
     throw error

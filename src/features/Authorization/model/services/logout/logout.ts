@@ -20,6 +20,7 @@ export const logout = createAsyncThunk<User, undefined, ThunkConfig<string>>(
 
             return response.data
         } catch (err) {
+            dispatch(userActions.logout())
             // @ts-expect-error
             return rejectWithValue(err.response.data) // 'error login'
         }

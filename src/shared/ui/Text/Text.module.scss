@@ -1,10 +1,12 @@
+@import url('https://fonts.cdnfonts.com/css/fira-sans-book');
+
 .title {
-    font: var(--font-l);
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
     color: var(--primary-color);
 }
 
 .text {
-    font: var(--font-m);
     color: var(--secondary-color);
 }
 
@@ -28,4 +30,25 @@
 
 .center {
     text-align: center;
+}
+
+.size-m {
+    .title {
+        font: var(--font-l);
+    }
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size-l {
+    .title {
+        font: var(--font-xl);
+    }
+    .text {
+        font: var(--font-l);
+    }
+}
+
+.size-xl {
 }
