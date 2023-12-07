@@ -1,5 +1,6 @@
 import React from 'react'
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
+import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 
 import { Icon } from './Icon'
 
@@ -14,4 +15,6 @@ export default {
 const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />
 
 export const Normal = Template.bind({})
-Normal.args = {}
+Normal.args = {
+    Svg: EyeIcon
+}

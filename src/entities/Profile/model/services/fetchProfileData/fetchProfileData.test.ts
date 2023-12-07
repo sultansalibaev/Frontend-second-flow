@@ -18,7 +18,7 @@ const data: Profile = {
     city: 'Semey'
 }
 
-describe('fetchArticle.test', () => {
+describe('fetchProfileData.test', () => {
     test('success', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData)
         thunk.api.get.mockReturnValue(Promise.resolve({ data }))

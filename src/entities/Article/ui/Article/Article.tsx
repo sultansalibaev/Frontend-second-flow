@@ -40,15 +40,16 @@ export const Article = memo((props: ArticleProps) => {
     const article = useSelector(getArticleData)
     const error = useSelector(getArticleError)
 
-    const renderBlock = useCallback((block: ArticleBlock) => {
-        if (block.type === 'code') return <ArticleCode block={block} />
-        else if (block.type === 'image') return <ArticleImage />
-        else if (block.type === 'text') return <ArticleText block={block} />
-        else if (block.type === 'title') return <ArticleTitle block={block} />
+    const renderBlock = useCallback((block: ArticleBlock, index) => {
+        if (block.type === 'code') return <ArticleCode block={block} key={index} />
+        else if (block.type === 'image') return <ArticleImage block={block} key={index} />
+        else if (block.type === 'text') return <ArticleText block={block} key={index} />
+        else if (block.type === 'title') return <ArticleTitle block={block} key={index} />
         else return null
     }, [])
 
     useEffect(() => {
+        if (__PROJECT__ === 'storybook') return
         void dispatch(fetchArticle(id))
     }, [dispatch, id])
 
@@ -67,23 +68,23 @@ export const Article = memo((props: ArticleProps) => {
                     className={classes.title}
                     width={'60%'}
                     height={30}
-                    borderRadius={'5px'}
+                    borderRadius={5}
                 />
                 <Skeleton
                     className={classes.title}
                     width={'40%'}
                     height={30}
-                    borderRadius={'5px'}
+                    borderRadius={5}
                 />
                 <Skeleton
                     width={'100%'}
                     height={230}
-                    borderRadius={'5px'}
+                    borderRadius={5}
                 />
                 <Skeleton
                     width={'100%'}
                     height={230}
-                    borderRadius={'5px'}
+                    borderRadius={5}
                 />
             </div>
         )
@@ -123,7 +124,7 @@ export const Article = memo((props: ArticleProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classNames({}, [classes.Article, className])}>
+            <div className={classNames({}, [classes.Article, 'max-w-[750px] mx-auto', className])}>
                 {content}
             </div>
         </DynamicModuleLoader>

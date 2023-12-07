@@ -1,0 +1,18 @@
+.Code {
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Menlo, Monaco, Consolas, "Courier New", Courier, monospace;
+}
+
+.Code.code-focused {
+    box-shadow: 0 0 0 2px #00a1ff;
+}
+
+.Code .cm-scroller {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.cm-gutters {
+    user-select: none;
+}

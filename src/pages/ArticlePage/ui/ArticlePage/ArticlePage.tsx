@@ -5,11 +5,11 @@ import { memo } from 'react'
 import { Article } from 'entities/Article'
 import { useParams } from 'react-router-dom'
 
-interface ArticleDetailsPageProps {
+interface ArticlePageProps {
     className?: string
 }
 
-const ArticlePage = function (props: ArticleDetailsPageProps) {
+const ArticlePage = function (props: ArticlePageProps) {
     const {
         className = ''
     } = props
@@ -19,14 +19,14 @@ const ArticlePage = function (props: ArticleDetailsPageProps) {
 
     if (id == null) {
         return (
-            <div className={classNames({}, [classes.ArticleDetailsPage, className])}>
+            <div className={classNames({}, [classes.ArticlePage, className])}>
                 {t('Статья не найдена')}
             </div>
         )
     }
 
     return (
-        <div className={classNames({}, [classes.ArticleDetailsPage, className])}>
+        <div className={classNames({}, [classes.ArticlePage, className])}>
             <Article id={id}></Article>
         </div>
     )

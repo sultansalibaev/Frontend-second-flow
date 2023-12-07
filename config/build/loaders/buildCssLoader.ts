@@ -16,6 +16,21 @@ export function buildCssLoader (isDev: boolean) {
                     }
                 }
             },
+            {
+                // process tailwind stuff
+                // https://webpack.js.org/loaders/postcss-loader/
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: isDev,
+                    postcssOptions: {
+                        plugins: [
+                            require('tailwindcss')
+                            // add addtional postcss plugins here
+                            // easily find plugins at https://www.postcss.parts/
+                        ]
+                    }
+                }
+            },
             'sass-loader'
         ]
     }

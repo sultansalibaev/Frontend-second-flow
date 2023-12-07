@@ -1,7 +1,7 @@
 export interface Article {
     id: number
-    author_id: number
-    author: {
+    userId: number
+    author?: {
         id: number
         email: string
         username: string
@@ -14,20 +14,20 @@ export interface Article {
     blocks: ArticleBlock[]
 }
 
-enum ArticleTag {
+export enum ArticleTag {
     javascript = 'javascript',
     es2022 = 'es2022',
     ecmascript_2022 = 'ecmascript_2022',
 }
 
-enum ArticleType {
+export enum ArticleType {
     IT = 'IT',
     JavaScript = 'JavaScript'
 }
 
 export type ArticleBlock = ArticleTitleBlock | ArticleTextBlock | ArticleImageBlock | ArticleQuoteBlock | ArticleCodeBlock | ArticleListBlock
 
-enum ArticleBlockType {
+export enum ArticleBlockType {
     TITLE = 'title',
     TEXT = 'text',
     IMAGE = 'image',
@@ -36,7 +36,7 @@ enum ArticleBlockType {
     LIST = 'list',
 }
 
-enum ArticleTitleType {
+export enum ArticleTitleType {
     H1 = 'h1',
     H2 = 'h2',
     H3 = 'h3',

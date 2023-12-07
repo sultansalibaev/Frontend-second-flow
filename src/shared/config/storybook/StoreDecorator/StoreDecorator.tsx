@@ -1,12 +1,14 @@
 import { type Story } from '@storybook/react'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { loginReducer } from 'features/Authorization/model/slice/loginSlice'
 import { profileReducer } from 'entities/Profile'
-import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { articleReducer } from 'entities/Article/model/slice/articleSlice'
 
 const defaltAsyncReducers: ReducersList = {
     loginForm: loginReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    article: articleReducer
 }
 
 export const StoreDecorator = (

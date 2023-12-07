@@ -1,19 +1,21 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import classes from './ArticleImage.module.scss'
 import { memo } from 'react'
+import { type ArticleImageBlock } from '../../model/types/article'
 
 interface ArticleImageProps {
     className?: string
+    block: ArticleImageBlock
 }
 
 export const ArticleImage = memo((props: ArticleImageProps) => {
     const {
-        className = ''
+        className = '',
+        block
     } = props
 
     return (
-        <div className={classNames({}, [classes.ArticleImage, className])}>
-            ArticleImage
+        <div className={classNames({}, [className])}>
+            <img className={'max-w-full mx-auto'} src={block.src} alt={block.subtitle} />
         </div>
     )
 })
