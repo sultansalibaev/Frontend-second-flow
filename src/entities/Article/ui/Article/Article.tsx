@@ -98,7 +98,7 @@ export const Article = memo((props: ArticleProps) => {
         )
     } else {
         content = (
-            <div className={classes.articleContainer}>
+            <div>
                 <Text
                     className={classes.title}
                     title={article?.title}
@@ -124,7 +124,7 @@ export const Article = memo((props: ArticleProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className={classNames({}, [classes.Article, 'max-w-[750px] mx-auto', className])}>
+            <div className={classNames({}, [classes.Article, className])}>
                 {content}
             </div>
         </DynamicModuleLoader>

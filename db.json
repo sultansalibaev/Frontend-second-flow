@@ -175,19 +175,19 @@
       "id": 1,
       "text": "some comment",
       "articleId": 1,
-      "authorId": 2
+      "userId": 2
     },
     {
       "id": 2,
       "text": "some comment 2",
       "articleId": 1,
-      "authorId": 2
+      "userId": 2
     },
     {
       "id": 3,
       "text": "some comment 3",
       "articleId": 1,
-      "authorId": 2
+      "userId": 2
     }
   ],
   "users": [

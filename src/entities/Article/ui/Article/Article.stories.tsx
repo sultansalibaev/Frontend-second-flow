@@ -13,7 +13,7 @@ export default {
     }
 } as ComponentMeta<typeof Article>
 
-const Template: ComponentStory<typeof Article> = (args) => <Article {...args} />
+const Template: ComponentStory<typeof Article> = (args) => <Article {...args} className={'max-w-[750px] mx-auto'} />
 
 const article = {
     id: 1,
