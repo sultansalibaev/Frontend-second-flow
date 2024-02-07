@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+h1 {
+    font-size: 55px;
+}
+h2 {
+    font-size: 44px;
+}
+h3 {
+    font-size: 35px;
+}
+h4 {
+    font-size: 28px;
+}
+h5 {
+    font-size: 23px;
+}
+h6 {
+    font-size: 18px;
+}
+
+img {
+    user-select: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 500;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: #333;
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --sidebar-text-color: var(--text-color);
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --switcher-color: #DDD;
+    --text-white: #fff;
+
+
+    --block-color: #fff;
+    --skeleton-bg-gradient-color: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    --sidebar-bg: url(./sidebar-bg.jpg) 0 0/250px auto repeat-y;
+    --sidebar-opacity: .7;
+
+    --tran-04: all 0.23s ease;
+    --tran-05: all .7s ease;
+}
+
+body.app-dark-theme {
+    --text-color: #ccc;
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --sidebar-text-color: var(--text-color);
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --switcher-color: #fff;
+
+
+    --block-color: #1c1d1f;
+    --skeletom-color: #242527;
+    --skeleton-bg-gradient-color: linear-gradient(110deg, #242527 8%, #272829 18%, #242527 33%);
+    --sidebar-bg: url(https://i.pinimg.com/736x/7d/1b/dc/7d1bdc87d0241570f1a16fd4564f800e.jpg) 0 0/300px auto repeat-y;
+    --sidebar-opacity: .2;
+}
+body.app-dark-theme {
+    --text-color: #fff;
+    --body-color: #121319;
+    --sidebar-color: #1A1C24;
+    --sidebar-text-color: #8F96A9;
+    --primary-color: #004DE5;
+    --primary-color-light: #3a3b3c;
+    --switcher-color: #fff;
+
+
+    --block-color: #191A21;
+    --skeletom-color: #1F2129;
+    --skeleton-bg-gradient-color: linear-gradient(110deg, #1F2129 8%, #23252e 18%, #1F2129 33%);
+    --sidebar-bg: url(https://i.pinimg.com/736x/7d/1b/dc/7d1bdc87d0241570f1a16fd4564f800e.jpg) 0 0/300px auto repeat-y;
+    --sidebar-opacity: .2;
+}
+
+
+.skeletom {
+    display: block;
+    height: 25px;
+    width: 200px;
+
+    background: var(--skeleton-bg-gradient-color);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+
+    margin-top: 10px;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+body {
+    background: var(--body-color);
+    color: var(--text-color);
+    transition: var(--tran-05);
+}
+.toggle-theme .switch,
+.block-bg-color,
+.skeletom,
+aside .search-box input,
+aside .search-box,
+aside .nav-items,
+aside {
+    transition: var(--tran-05) !important;
+}
+
+/* ============================ */
+
+aside {
+    padding: 10px 14px;
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    background: var(--sidebar-color);
+    position: relative;
+}
+
+/* Content Section or another */
+section {
+    /* padding: 12px 60px; */
+    padding: 20px 60px;
+}
+.block-bg-color {
+    background: var(--block-color);
+}
+
+p {
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+}
+
+
+
+
+/* Sidebar close switcher */
+
+aside .toggle i {
+    transform: rotate(180deg);
+    transition: var(--tran-05);
+}
+
+aside.close .toggle i {
+    transform: rotate(0deg);
+}
+aside .toggle {
+    position: absolute;
+    top: 25px;
+    left: calc(100% - 12px);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05), width .2s, opacity .2s !important;
+}
+
+/* Closed sidebar */
+
+aside.close {
+    max-width: 66px;
+}
+aside.close .toggle {
+    justify-content: end;
+    width: 35px;
+    border-radius: 0 15px 15px 0;
+    left: 100%;
+}
+aside.close .toggle:not(:hover) {
+    width: 25px;
+    opacity: .4;
+}
+
+
+
+
+
+
+
+
+/* Sidebar Logo */
+
+aside .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+aside .profession {
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+aside .image {
+    margin-right: 10px;
+    width: 100%;
+    min-width: 40px;
+    max-width: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+aside .image img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+/* Sidebar Navigation */
+
+aside a.nav-item {
+    text-decoration: none;
+}
+.nav-items {
+    overflow-y: scroll;
+}
+.nav-items::-webkit-scrollbar {
+    display: none;
+}
+.nav-footer {
+    border-top: 1px solid var(--switcher-color);
+}
+aside .nav-item {
+    user-select: none;
+    padding: 0 0 0 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--tran-04);
+
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    margin-top: 6.5px;
+}
+aside .search-box {
+    background-color: var(--body-color);
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+aside .icon {
+    font-size: 17px;
+}
+aside .text,
+aside .icon {
+    color: var(--sidebar-text-color);
+    transition: var(--tran-04);
+    margin-right: 10px;
+}
+
+aside .search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--body-color);
+    color: var(--text-color);
+    font-size: 17px;
+    transition: var(--tran-04);
+    font-family: Arial;
+}
+
+
+aside .nav-item:not(.ignore-hover):hover {
+    background-color: var(--primary-color);
+}
+
+aside .nav-item:not(.ignore-hover):hover * {
+    color: var(--text-white);
+}
+
+
+
+
+aside.close .theme {
+    min-height: 25px;
+}
+aside .theme {
+    border-radius: 6px;
+    background-color: var(--body-color);
+    position: relative;
+}
+aside .theme:hover {
+    background-color: var(--body-color);
+}
+aside .theme:hover * {
+    color: var(--text-color);
+}
+
+.theme .sun-moon {
+    height: 17px;
+    width: 60px;
+}
+
+.theme .sun-moon i {
+    position: absolute;
+}
+
+.theme .sun-moon i.sun {
+    opacity: 0;
+}
+
+body.app-dark-theme .theme .sun-moon i.sun {
+    opacity: 1;
+}
+
+body.app-dark-theme .theme .sun-moon i.moon {
+    opacity: 0;
+}
+aside.close .theme > *:not(.toggle-theme) {
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+aside:not(.close) .nav-footer .toggle-theme {
+    margin-right: .75em;
+}
+/* nav.close .nav-footer {
+    min-width: 46px;
+    margin-left: -3px;
+} */
+
+.nav-footer .toggle-theme {
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375em;
+    cursor: pointer;
+}
+
+.toggle-theme .switch {
+    position: relative;
+    height: 1.125em;
+    width: 2.25em;
+    border-radius: 1.5625em;
+    background-color: var(--text-color);
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 0.88em;
+    width: 0.88em;
+    border-radius: 50%;
+    top: 50%;
+    left: 0.18em;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.app-dark-theme .switch::before {
+    left: 1.2em;
+}
+aside .bg-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    display: none;
+    transition: var(--tran-05);
+}
+aside .blured-img {
+    background: url(https://img.freepik.com/premium-photo/a-black-background-with-a-pile-of-rocks-and-the-words-coal-on-it_900321-20773.jpg?w=826) 0 0/250px auto repeat-y;
+    background: var(--sidebar-bg);
+    filter: blur(16px);
+    width: 100%;
+    height: 100%;
+    opacity: var(--sidebar-opacity);
+}
+aside.close .blured-img {
+    filter: blur(5px);
+}
+aside .bg-image * {
+    transition: var(--tran-05);
+}
+body.app-dark-theme aside .bg-image {
+    display: block;
+}
+
+aside > *:not(.bg-image) {
+    z-index: 1;
+}

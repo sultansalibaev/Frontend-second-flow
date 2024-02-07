@@ -20,6 +20,7 @@ body {
     font: var(--font-m);
     background: var(--bg-color);
     color: var(--primary-color);
+    transition: none !important;
 }
 
 .app {
@@ -27,6 +28,18 @@ body {
     background: var(--bg-color);
     color: var(--primary-color);
     min-height: 100vh;
+
+    font-family: Poppins, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    overflow: hidden;
+}
+#root {
+    overflow: hidden;
 }
 
 .content-page {

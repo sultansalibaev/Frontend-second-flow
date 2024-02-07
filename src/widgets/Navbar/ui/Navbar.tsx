@@ -41,7 +41,7 @@ export const Navbar = memo(({ className = '' }: NavbarProps) => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (authData) {
         return (
-            <div className={classNames({}, [classes.Navbar, className])}>
+            <div className={classNames({}, ['hidden', classes.Navbar, className])}>
 
                 <ThemeSwitcher/>
                 <div className={classes.links}>
@@ -53,7 +53,7 @@ export const Navbar = memo(({ className = '' }: NavbarProps) => {
         )
     } else {
         return (
-            <div className={classNames({}, [classes.Navbar, className])}>
+            <div className={classNames({}, ['hidden', classes.Navbar, className])}>
                 <ThemeSwitcher/>
                 <div className={classes.links}>
                     <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>
